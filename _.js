@@ -22,8 +22,29 @@ const _ = {
         let startPaddingLength = Math.floor((length - string.length) / 2);
         let endPaddingLength = length - string.length - startPaddingLength;
         let paddedString = ' ';
-        
+
         return paddedString.repeat(startPaddingLength) + string + paddedString.repeat(endPaddingLength);
+    },
+    has(obj, key) {
+        return obj[key] == null ? false : true;
+    },
+    invert(obj) {
+        let invertedObj = {};
+
+        for (let key in obj) {
+            let originalValue = obj[key];
+            invertedObj[originalValue] = key;
+        }
+
+        return invertedObj;
+    },
+    findKey(obj, predicate) {
+        for (let key in obj) {
+            if (predicate(obj[key]))
+                return key;
+        }
+
+        return undefined;
     }
 };
 
